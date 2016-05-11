@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>outline</title>
+	<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.box{
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.5);
+	}
+	.container{
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	.text_cont{
+		width: 400px;
+		height: 200px;
+		position: absolute;
+		top:50%;
+		margin-top: -100px;
+		left: 50%;
+		margin-left: -200px; 
+	}
+	.text_cont:before,.text_cont:after{
+		content: '';
+		width: 400px;
+		height: 200px;
+		position: absolute;
+	}
+	.text_cont:before{
+		left: 0px;
+		bottom: 0px;
+		border-left: white solid 2px;
+		border-bottom: white solid 2px;
+		clip: rect(200px,402px,202px,402px);
+		/*clip: rect(200px,402px,202px,-2px);*/
+		/*clip: rect(2px,400px,202px,-2px);*/
+		-webkit-animation: outlineLeft 1s 1s 1 linear forwards;
+		-o-animation: outlineLeft 1s 1s 1 linear forwards;
+		animation: outlineLeft 1s 1s 1 linear forwards;
+	}
+	.text_cont:after{
+		top: 0px;
+		right: 0px;
+		border-right: white solid 2px;
+		border-top: white solid 2px;
+		clip: rect(0px,0px,2px,0px);
+		/*clip: rect(0px,402px,2px,0px);*/
+		/*clip: rect(0,402px,200px,2px);*/
+		-webkit-animation: outlineRight 1s  1 linear forwards;
+		-o-animation: outlineRight 1s  1 linear forwards;
+		animation: outlineRight 1s  1 linear forwards;
+	}
+
+	@keyframes outlineLeft{
+		0%{
+			clip: rect(200px,400px,202px,400px);
+		}
+		
+		50%{
+			clip: rect(200px,400px,202px,-2px);
+		}
+		100%{
+			clip: rect(2px,400px,202px,-2px);
+		}
+	}
+	@keyframes outlineRight{
+		0%{
+			clip: rect(0px,0px,2px,0px);
+		}
+		50%{
+			clip: rect(0px,402px,2px,0px);
+		}
+		100%{
+			clip: rect(0,402px,200px,2px);
+		}
+	}
+	@keyframes fade{
+		0%{
+			opacity: 0;
+		}
+		100%{
+			opacity: 1;
+		}
+	}
+	.text{
+		width: 100%;
+		height: 100%;
+		background: white;
+		opacity: 0;
+		-webkit-animation: fade 1s 2s linear forwards;
+		-o-animation: fade 1s 2s linear forwards;
+		animation: fade 1s 2s linear forwards;
+	}
+	</style>
+</head>
+<body>
+	<div class="box">
+			<div class='container'>
+				<div class="text_cont">
+					<div class="text"></div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
